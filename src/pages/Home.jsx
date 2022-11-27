@@ -25,8 +25,8 @@ const Home = () => {
 
 
     return (
-        <div>
-            <div>
+        <div className='home-container' >
+            <div className='categories' >
                 <h2>Categories</h2>
                 {categories.map(category => (
                     <button key={category.id}
@@ -34,38 +34,43 @@ const Home = () => {
                     >{category.name}</button>
                 ))}
             </div>
-            <div>
-                <InputGroup  className="mb-3">
-                    <Form.Control
-                        placeholder="Recipient's username"
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
-                        value={inputSearch}
-                        onChange={e=>setInputSearch(e.target.value)}
-                    />
-                    <Button variant="outline-secondary" id="button-addon2"
-                        onClick={()=>{dispatch(filterQueryThunk(inputSearch))}}
-                    >
-                        Button
-                    </Button>
-                </InputGroup>
-            </div>
-            <div>
-                {products.map(product => (
-                    <li key={product.id}>
-                        <Link to={`/product/${product.id}`}>
-                            <div>
-                                <img className='product-image' src={product.productImgs[0]} alt="" />
-                            </div>
-                            <div className=''>
-                                <p>{product.title}</p>
-                                <span>Price</span>
-                                <p>{product.price}</p>
-                                <button>cart</button>
-                            </div>
-                        </Link>
-                    </li>
-                ))}
+
+            <div className='products'>
+                <div className='input-search'>
+                    <InputGroup className="mb-3">
+                        <Form.Control
+                            placeholder="Recipient's username"
+                            aria-label="Recipient's username"
+                            aria-describedby="basic-addon2"
+                            value={inputSearch}
+                            onChange={e => setInputSearch(e.target.value)}
+                        />
+                        <Button variant="outline-secondary" id="button-addon2"
+                            onClick={() => { dispatch(filterQueryThunk(inputSearch)) }}
+                        >
+                            Button
+                        </Button>
+                    </InputGroup>
+                </div>
+                <div className='products-container'>
+                    {products.map(product => (
+                        <li key={product.id}>
+                            <Link className='product-card'  to={`/product/${product.id}`}>
+                                <div>
+                                <div>
+                                    <img className='product-image' src={product.productImgs[0]} alt="" />
+                                </div>
+                                <div className='card-description'>
+                                    <span>{product.title}</span>
+                                    <span>Price</span>
+                                    <span>{product.price}</span>
+                                    <button className='add-to-cart-card'>cart</button>
+                                </div>
+                                </div>
+                            </Link>
+                        </li>
+                    ))}
+                </div>
             </div>
 
         </div>
