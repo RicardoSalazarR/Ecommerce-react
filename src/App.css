@@ -44,3 +44,6 @@
     justify-content: center;
     align-items: center;
   }
+  .product-image{
+    max-height: 150px;
+  }
