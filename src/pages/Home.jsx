@@ -35,36 +35,36 @@ const Home = () => {
                 ))}
             </div>
             <div>
-                <InputGroup  className="mb-3">
+                <InputGroup className="mb-3">
                     <Form.Control
                         placeholder="Recipient's username"
                         aria-label="Recipient's username"
                         aria-describedby="basic-addon2"
                         value={inputSearch}
-                        onChange={e=>setInputSearch(e.target.value)}
+                        onChange={e => setInputSearch(e.target.value)}
                     />
                     <Button variant="outline-secondary" id="button-addon2"
-                        onClick={()=>{dispatch(filterQueryThunk(inputSearch))}}
+                        onClick={() => { dispatch(filterQueryThunk(inputSearch)) }}
                     >
                         Button
                     </Button>
                 </InputGroup>
             </div>
-            <div>
+            <div className='all-products'>
                 {products.map(product => (
-                    <li key={product.id}>
-                        <Link to={`/product/${product.id}`}>
-                            <div>
-                                <img className='product-image' src={product.productImgs[0]} alt="" />
-                            </div>
-                            <div className=''>
-                                <p>{product.title}</p>
-                                <span>Price</span>
-                                <p>{product.price}</p>
-                                <button>cart</button>
-                            </div>
+                    <div className='product-card' key={product.id}>
+                        <Link className='img-title' to={`/product/${product.id}`}>
+
+                            <img className='product-image' src={product.productImgs[0]} alt="" />
+
+                            <p className='product-title'> <b> {product.title} </b> </p>
                         </Link>
-                    </li>
+                        <div className='price-and-btn'>
+                            <span>Price</span>
+                            <p className='price'>${product.price}</p>
+                            <button className='btn-addCart'><i class='bx bx-cart' ></i></button>
+                        </div>
+                    </div>
                 ))}
             </div>
 
