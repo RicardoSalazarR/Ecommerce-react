@@ -25,8 +25,8 @@ const Home = () => {
 
 
     return (
-        <div>
-            <div>
+        <div className='home-container' >
+            <div className='categories' >
                 <h2>Categories</h2>
                 {categories.map(category => (
                     <button key={category.id}
@@ -34,38 +34,43 @@ const Home = () => {
                     >{category.name}</button>
                 ))}
             </div>
-            <div>
-                <InputGroup className="mb-3">
-                    <Form.Control
-                        placeholder="Recipient's username"
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
-                        value={inputSearch}
-                        onChange={e => setInputSearch(e.target.value)}
-                    />
-                    <Button variant="outline-secondary" id="button-addon2"
-                        onClick={() => { dispatch(filterQueryThunk(inputSearch)) }}
-                    >
-                        Button
-                    </Button>
-                </InputGroup>
-            </div>
-            <div className='all-products'>
-                {products.map(product => (
-                    <div className='product-card' key={product.id}>
-                        <Link className='img-title' to={`/product/${product.id}`}>
 
-                            <img className='product-image' src={product.productImgs[0]} alt="" />
-
-                            <p className='product-title'> <b> {product.title} </b> </p>
-                        </Link>
-                        <div className='price-and-btn'>
-                            <span>Price</span>
-                            <p className='price'>${product.price}</p>
-                            <button className='btn-addCart'><i class='bx bx-cart' ></i></button>
-                        </div>
-                    </div>
-                ))}
+            <div className='products'>
+                <div className='input-search'>
+                    <InputGroup className="mb-3">
+                        <Form.Control
+                            placeholder="Recipient's username"
+                            aria-label="Recipient's username"
+                            aria-describedby="basic-addon2"
+                            value={inputSearch}
+                            onChange={e => setInputSearch(e.target.value)}
+                        />
+                        <Button variant="outline-secondary" id="button-addon2"
+                            onClick={() => { dispatch(filterQueryThunk(inputSearch)) }}
+                        >
+                            Button
+                        </Button>
+                    </InputGroup>
+                </div>
+                <div className='products-container'>
+                    {products.map(product => (
+                        <li key={product.id}>
+                            <Link className='product-card' to={`/product/${product.id}`}>
+                                <div>
+                                    <div>
+                                        <img className='product-image' src={product.productImgs[0]} alt="" />
+                                    </div>
+                                    <div className='card-description'>
+                                        <span>{product.title}</span>
+                                        <span>Price</span>
+                                        <span>{product.price}</span>
+                                        <button className='add-to-cart-card'>cart</button>
+                                    </div>
+                                </div>
+                            </Link>
+                        </li>
+                    ))}
+                </div>
             </div>
 
         </div>
