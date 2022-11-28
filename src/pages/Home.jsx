@@ -13,7 +13,8 @@ const Home = () => {
     const products = useSelector(state => state.products)
     const [categories, setCategories] = useState([])
     const [inputSearch, setInputSearch] = useState('')
-
+    const[priceFrom, setPriceFrom] = useState('') 
+    const[priceTo, setPriceTo] = useState('')
 
     useEffect(() => {
         dispatch(getProductsThunk())
@@ -26,13 +27,32 @@ const Home = () => {
 
     return (
         <div className='home-container' >
-            <div className='categories' >
-                <h2>Categories</h2>
-                {categories.map(category => (
-                    <button key={category.id}
-                        onClick={() => dispatch(filterProductsThunk(category.id))}
-                    >{category.name}</button>
-                ))}
+            <div className='filters-container'>
+                <div>
+                    <h2>Price</h2>
+                    <Form>
+                        <fieldset enable>
+                            <Form.Group className="mb-3" onChange={e=> setPriceFrom(e.target.value)} >
+                                <Form.Label htmlFor="disabledTextInput">From</Form.Label>
+                                <Form.Control id="disabledTextInput"/>
+                            </Form.Group>
+                            <Form.Group className="mb-3" onChange={e => setPriceTo(e.target.value)}>
+                                <Form.Label htmlFor="disabledSelect">To</Form.Label>
+                                <Form.Control id="disabledSelect"/>
+                            </Form.Group>
+                            <Button type="submit" onClick={()=>alert(priceFrom+' '+priceTo)} >Submit</Button>
+                        </fieldset>
+                    </Form>
+                </div>
+                <hr />
+                <div className='categories' >
+                    <h2>Category</h2>
+                    {categories.map(category => (
+                        <p key={category.id}
+                            onClick={() => dispatch(filterProductsThunk(category.id))}
+                        >{category.name}</p>
+                    ))}
+                </div>
             </div>
 
             <div className='products'>
