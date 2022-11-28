@@ -1,14 +1,8 @@
 *{
-<<<<<<< HEAD
-  box-sizing: border-box;
-}
-
-=======
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
->>>>>>> f412e9723cc769e5ba647fc08cc27da613dd5346
 .lds-ring {
   display: inline-block;
   position: relative;
@@ -113,9 +107,39 @@ li {
   position: absolute;
   right: 10px;
   bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: darksalmon;
+  color: white;
+}
+
+.add-to-cart-card:hover{
+  background-color: rgb(228, 129, 96);
+}
+
+.bx-cart{
+  font-size: 1.5rem;
 }
 
 .card-description{
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+.price{
+  color: black;
+  display: flex;
+  gap: 0.3rem;
+  width: 100%;
+  margin-left: 0;
+}
+
+.title{
+  margin-top: 0.5rem;
 }

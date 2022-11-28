@@ -61,10 +61,12 @@ const Home = () => {
                                         <img className='product-image' src={product.productImgs[0]} alt="" />
                                     </div>
                                     <div className='card-description'>
-                                        <span>{product.title}</span>
-                                        <span>Price</span>
-                                        <span>{product.price}</span>
-                                        <button className='add-to-cart-card'>cart</button>
+                                        <span className='title'> <b> {product.title} </b> </span>
+                                        <div className='price'>
+                                            <span>Price </span>
+                                            <span> ${product.price}</span>
+                                        </div>
+                                        <button className='add-to-cart-card'><i class='bx bx-cart'></i></button>
                                     </div>
                                 </div>
                             </Link>
