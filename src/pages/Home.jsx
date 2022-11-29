@@ -41,7 +41,7 @@ const Home = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicPassword" onChange={e => setPriceTo(e.target.value)}>
                             <Form.Label>To</Form.Label>
-                            <Form.Control type="number"/>
+                            <Form.Control type="number" />
                         </Form.Group>
                         <Button type="submit" onClick={() => alert(priceFrom + ' ' + priceTo)} >Submit</Button>
                     </Form>
@@ -61,7 +61,7 @@ const Home = () => {
                 <div className='input-search'>
                     <InputGroup className="mb-3">
                         <Form.Control
-                            placeholder="Recipient's username"
+                            placeholder="What are you looking for?"
                             aria-label="Recipient's username"
                             aria-describedby="basic-addon2"
                             value={inputSearch}
