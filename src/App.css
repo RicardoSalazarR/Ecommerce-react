@@ -163,6 +163,7 @@ a{
 .product-detail{
   width: 80%;
   margin: auto;
+  padding-bottom: 2rem;
 }
 
 .main-information{
@@ -178,6 +179,8 @@ grid-template-areas:
 "image button button button button"
 "image . . . ."
 ;
+
+padding-bottom: 4rem;
 }
 .grid{
   max-width: 550px;
@@ -185,17 +188,34 @@ grid-template-areas:
 .grid.image{
   grid-area: image;
   max-height: 1500px;
+  max-height: 500px;
   padding-top:2rem;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
 }
-.grid.image>div{
+.main-image-container{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 500px;
+  height: 350px;
+}
+.litle-images{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  height: 200px;
+  width: 100%;
+}
+.main-image{
+  max-height: 100%;
+  max-width: 100%;
 }
 .product-images{
   width: 100px;
+  max-height: 200px;
   padding:0 0.5rem 3rem 0.5rem;
 }
 .change-image{

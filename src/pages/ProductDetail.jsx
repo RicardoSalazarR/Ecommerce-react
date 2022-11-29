@@ -25,12 +25,12 @@ const ProductDetail = () => {
         <div className='product-detail'>
             <div className='main-information'>
                 <div className='grid image'>
-                    <div>
+                    <div className='main-image-container'>
                         <button className='change-image'> {'<'} </button>
-                        <img src={product?.productImgs[0]} alt="" />
+                        <img className='main-image' src={product?.productImgs[0]} alt="" />
                         <button className='change-image'>{'>'}</button>
                     </div>
-                    <div>
+                    <div className='litle-images'>
                         {
                             product.productImgs.map(image=>(
                                 <img src={image} alt="" key={image} className='product-images'/>
@@ -85,27 +85,3 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-
-
-// <div className='product-detail'>
-//             <h1>Product Detail</h1>
-//             <div className='product-despription'>
-//                 <img src={product?.productImgs[0]} alt="" />
-//                 <div>
-//                     <h3>{product?.title}</h3>
-//                     <p>{product?.description}</p>
-//                     <div className='price-and-quantity'>
-//                         <div>
-//                             <span>Price</span>
-//                             <p>{product?.price}</p>
-//                         </div>
-//                         <div>
-//                             <span>Quantity</span>
-//                             <button onClick={() => quantity > 0 && setQuantity(quantity - 1)}>-</button>
-//                             <span>{quantity}</span>
-//                             <button onClick={() => setQuantity(quantity + 1)}>+</button>
-//                         </div>
-//                     </div>
-//                     <button className='btn-cart'>add to cart</button>
-//                 </div>
-//             </div>
