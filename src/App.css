@@ -82,6 +82,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 li {
@@ -117,6 +118,9 @@ li {
 
 .add-to-cart-card:hover{
   background-color: rgb(228, 129, 96);
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .bx-cart{
@@ -143,6 +147,8 @@ a{
 
 .title{
   margin-top: 0.5rem;
+  color: rgb(102, 61, 59);
+  font-size: 1.1rem;
 }
 .categories{
   display: flex;
@@ -262,4 +268,44 @@ padding-bottom: 4rem;
   width: 20px;
   height: 25px;
   margin: 0 8px;
+}
+
+.form-father{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.form-input{
+  width: 500px;
+  height: 370px;
+  margin: 2rem auto;
+  /* border: 1px solid black; */
+  border-radius: 8px;
+  background-color: rgba(233, 150, 122, 0.129);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.welcome-form{
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* margin-bottom: 1rem; */
+}
+
+.category-name:hover{
+font-weight: bold;
+color: darksalmon;
+}
+
+.btn-submit{
+  background-color: rgb(231, 96, 91) !important;
+  border: none !important;
+}
+
+.btn-submit:hover{
+  background-color: rgb(228, 129, 96) !important;
 }

@@ -43,7 +43,7 @@ const Home = () => {
                             <Form.Label>To</Form.Label>
                             <Form.Control type="number" />
                         </Form.Group>
-                        <Button type="submit" onClick={() => alert(priceFrom + ' ' + priceTo)} >Submit</Button>
+                        <Button className='btn-submit' type="submit" onClick={() => alert(priceFrom + ' ' + priceTo)} >Submit</Button>
                     </Form>
                 </div>
                 <hr />
@@ -51,7 +51,7 @@ const Home = () => {
                     <h2>Category</h2>
                     {categories.map(category => (
                         <p key={category.id}
-                            onClick={() => dispatch(filterProductsThunk(category.id))}
+                            onClick={() => dispatch(filterProductsThunk(category.id))} className='category-name'
                         >{category.name}</p>
                     ))}
                 </div>

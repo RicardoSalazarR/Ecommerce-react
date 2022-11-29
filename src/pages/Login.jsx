@@ -12,44 +12,51 @@ const Login = () => {
     const navigate = useNavigate()
 
     const submit = (data) => {
-        axios.post('https://e-commerce-api.academlo.tech/api/v1/users/login',data)
-        .then(res=>{
-            navigate("/")
-            console.log(res.data.data.token)
-            localStorage.setItem("token", res.data.data.token)
+        axios.post('https://e-commerce-api.academlo.tech/api/v1/users/login', data)
+            .then(res => {
+                navigate("/")
+                console.log(res.data.data.token)
+                localStorage.setItem("token", res.data.data.token)
 
-        })
-        .catch(error=>{
-            if(error.response?.status===404){
-                alert("Credenciales incorrectas")
-            }else{
-                alert(error.response?.status)
-            }
-        })
+            })
+            .catch(error => {
+                if (error.response?.status === 404) {
+                    alert("Credenciales incorrectas")
+                } else {
+                    alert(error.response?.status)
+                }
+            })
     };
     return (
-        <Form onSubmit={handleSubmit(submit)}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    {...register("email")}
-                />
-            </Form.Group>
+        <div className="form-father">
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    {...register("password")}
-                />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
+            <Form onSubmit={handleSubmit(submit)} className='form-input'>
+                <p className='welcome-form'>Welcome! Enter your email and password to continue</p>
+                <div className="inputs-btn-login">
+
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="Enter email"
+                            {...register("email")}
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            {...register("password")}
+                        />
+                    </Form.Group>
+                    <Button variant="primary" type="submit" className='btn-submit'>
+                        Submit
+                    </Button>
+                </div>
+            </Form>
+        </div>
     );
 };
 
