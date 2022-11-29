@@ -159,3 +159,74 @@ a{
 .filters-container{
   padding-left: 1.5rem;
 }
+
+.product-detail{
+  width: 80%;
+  margin: auto;
+}
+
+.main-information{
+display: grid;
+align-items: center;
+gap: 2rem;
+grid-template-areas: 
+"image . . . ."
+"image title title title title"
+"image detail detail detail detail"
+"image description description description description"
+"image price . quantity ."
+"image button button button button"
+"image . . . ."
+;
+}
+.grid{
+  max-width: 550px;
+}
+.grid.image{
+  grid-area: image;
+  max-height: 1500px;
+  padding-top:2rem;
+  display: flex;
+  flex-direction: column;
+}
+.grid.image>div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-images{
+  width: 100px;
+  padding:0 0.5rem 3rem 0.5rem;
+}
+.change-image{
+  border-radius: 50%;
+}
+.grid.title{
+  grid-area: title;
+  
+}
+.grid.detail{
+  grid-area: detail;
+  
+}
+.grid.description{
+  grid-area: description;
+}
+.grid.price{
+  grid-area: price;
+  display: flex;
+  flex-direction: column;
+}
+.grid.quantity{
+  grid-area: quantity;
+  display: flex;
+  flex-direction: column;
+  
+}
+.grid.btn-cart{
+  grid-area: button;
+}
+.related-items{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}

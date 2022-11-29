@@ -23,25 +23,57 @@ const ProductDetail = () => {
 
     return (
         <div className='product-detail'>
-            <h1>Product Detail</h1>
-            <img src={product?.productImgs[0]} alt="" />
-            <p>{product?.title}</p>
-            <span>Price</span>
-            <p>{product?.description}</p>
-            <p>{product?.price}</p>
-            <div>
-                <span>Quantity</span>
-                <button onClick={() => quantity > 0 && setQuantity(quantity - 1)}>-</button>
-                <span>{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)}>+</button>
+            <div className='main-information'>
+                <div className='grid image'>
+                    <div>
+                        <button className='change-image'> {'<'} </button>
+                        <img src={product?.productImgs[0]} alt="" />
+                        <button className='change-image'>{'>'}</button>
+                    </div>
+                    <div>
+                        {
+                            product.productImgs.map(image=>(
+                                <img src={image} alt="" key={image} className='product-images'/>
+                            ))
+                        }
+                    </div>
+                </div>
+                <p className='grid title'>{product?.title}</p>
+                <h1 className='grid detail'>Product Detail</h1>
+                <p className='grid description'>{product?.description}</p>
+                <div className='grid price'>
+                    <span>Price</span>
+                    <p>{product?.price}</p>
+                </div>
+                <div className='grid quantity'>
+                    <span>Quantity</span>
+                    <div>
+                        <button onClick={() => quantity > 0 && setQuantity(quantity - 1)}>-</button>
+                        <span>{quantity}</span>
+                        <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                    </div>
+                </div>
+                <button className='grid btn-cart'>add to cart</button>
             </div>
-            <button className='btn-cart'>add to cart</button>
 
-            <div>
-                <h2>Related Products</h2>
+            <h2>Related Products</h2>
+            <div className='related-items'>
+                
                 {productsRelated.map(product => (
-                    <Link to={`/product/${product.id}`} key={product.id}>
-                        <p>{product.title}</p>
+                    <Link className='product-card' to={`/product/${product.id}`}>
+                        <div>
+                            <div>
+                                <img className='product-image' src={product.productImgs[0]} alt="" />
+                            </div>
+                            <div className='card-description'>
+                                <span className='title'> <b> {product.title} </b> </span>
+                                <div className='price'>
+                                    <span>Price </span>
+                                    <span> ${product.price}</span>
+                                </div>
+                                <button className='add-to-cart-card'><i class='bx bx-cart'></i></button>
+                            </div>
+                        </div>
                     </Link>
                 ))
 
@@ -53,3 +85,27 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+
+
+// <div className='product-detail'>
+//             <h1>Product Detail</h1>
+//             <div className='product-despription'>
+//                 <img src={product?.productImgs[0]} alt="" />
+//                 <div>
+//                     <h3>{product?.title}</h3>
+//                     <p>{product?.description}</p>
+//                     <div className='price-and-quantity'>
+//                         <div>
+//                             <span>Price</span>
+//                             <p>{product?.price}</p>
+//                         </div>
+//                         <div>
+//                             <span>Quantity</span>
+//                             <button onClick={() => quantity > 0 && setQuantity(quantity - 1)}>-</button>
+//                             <span>{quantity}</span>
+//                             <button onClick={() => setQuantity(quantity + 1)}>+</button>
+//                         </div>
+//                     </div>
+//                     <button className='btn-cart'>add to cart</button>
+//                 </div>
+//             </div>
