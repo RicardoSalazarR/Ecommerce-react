@@ -42,27 +42,34 @@ const ProductDetail = () => {
                     <div className='litle-images'>
                         {
                             product?.productImgs.map(image=>(
-                                <img src={image} alt="" key={image} className='product-images'/>
+                                <div key={product.productImgs.indexOf(image)}>
+                                    <img 
+                                    src={image} 
+                                    alt="" 
+                                    className='product-images'
+                                    onClick={()=>setIndexImage(product?.productImgs.indexOf(image))}
+                                    />
+                                </div>
+                                
                             ))
                         }
                     </div>
                 </div>
-                <p className='grid title'>{product?.title}</p>
-                <h1 className='grid detail'>Product Detail</h1>
+                <h3 className='grid title'>{product?.title}</h3>
                 <p className='grid description'>{product?.description}</p>
                 <div className='grid price'>
                     <span>Price</span>
-                    <p>{product?.price}</p>
+                    <p>${product?.price}</p>
                 </div>
                 <div className='grid quantity'>
                     <span>Quantity</span>
-                    <div>
+                    <div className='quantity-container'>
                         <button onClick={() => quantity > 1 && setQuantity(quantity - 1)}>-</button>
                         <span>{quantity}</span>
                         <button onClick={() => setQuantity(quantity + 1)}>+</button>
                     </div>
                 </div>
-                <button className='grid btn-cart'>add to cart</button>
+                <button className='grid btn-cart'>add to cart <i className='bx bx-cart'></i></button>
             </div>
 
             <h2>Related Products</h2>

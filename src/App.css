@@ -173,7 +173,6 @@ gap: 2rem;
 grid-template-areas: 
 "image . . . ."
 "image title title title title"
-"image detail detail detail detail"
 "image description description description description"
 "image price . quantity ."
 "image button button button button"
@@ -209,6 +208,9 @@ padding-bottom: 4rem;
   height: 200px;
   width: 100%;
 }
+.product-images:hover{
+  cursor: pointer;
+}
 .main-image{
   max-height: 100%;
   max-width: 100%;
@@ -219,14 +221,15 @@ padding-bottom: 4rem;
   padding:0 0.5rem 3rem 0.5rem;
 }
 .change-image{
+  height: 35px;
+  width: 35px;
+  border: none;
+  background-color: rgb(231, 96, 91);
+  color: white;
   border-radius: 50%;
 }
 .grid.title{
   grid-area: title;
-  
-}
-.grid.detail{
-  grid-area: detail;
   
 }
 .grid.description{
@@ -245,8 +248,21 @@ padding-bottom: 4rem;
 }
 .grid.btn-cart{
   grid-area: button;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: rgb(231, 96, 91);
+  border: none;
 }
 .related-items{
   display: grid;
   grid-template-columns: repeat(4,1fr);
+}
+.quantity-container>button{
+  border: none;
+  width: 20px;
+  height: 25px;
+  margin: 0 8px;
 }
