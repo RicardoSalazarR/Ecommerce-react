@@ -8,6 +8,7 @@ import { getProductsThunk } from '../store/slices/products.slice';
 const ProductDetail = () => {
     const dispatch = useDispatch()
     const [quantity, setQuantity] = useState(1)
+    const [indexImage, setIndexImage] = useState(0)
 
 
     useEffect(() => {
@@ -26,13 +27,21 @@ const ProductDetail = () => {
             <div className='main-information'>
                 <div className='grid image'>
                     <div className='main-image-container'>
-                        <button className='change-image'> {'<'} </button>
-                        <img className='main-image' src={product?.productImgs[0]} alt="" />
-                        <button className='change-image'>{'>'}</button>
+                        <button className='change-image' onClick={()=>{
+                            if(indexImage > 0){
+                                setIndexImage(indexImage - 1)
+                            }
+                        }}> {'<'} </button>
+                        <img className='main-image' src={product?.productImgs[indexImage]} alt="" />
+                        <button className='change-image' onClick={()=>{
+                            if(indexImage < product.productImgs.length-1){
+                                setIndexImage(indexImage + 1)
+                            }
+                        }}>{'>'}</button>
                     </div>
                     <div className='litle-images'>
                         {
-                            product.productImgs.map(image=>(
+                            product?.productImgs.map(image=>(
                                 <img src={image} alt="" key={image} className='product-images'/>
                             ))
                         }
@@ -48,7 +57,7 @@ const ProductDetail = () => {
                 <div className='grid quantity'>
                     <span>Quantity</span>
                     <div>
-                        <button onClick={() => quantity > 0 && setQuantity(quantity - 1)}>-</button>
+                        <button onClick={() => quantity > 1 && setQuantity(quantity - 1)}>-</button>
                         <span>{quantity}</span>
                         <button onClick={() => setQuantity(quantity + 1)}>+</button>
                     </div>
@@ -71,7 +80,7 @@ const ProductDetail = () => {
                                     <span>Price </span>
                                     <span> ${product.price}</span>
                                 </div>
-                                <button className='add-to-cart-card'><i class='bx bx-cart'></i></button>
+                                <button className='add-to-cart-card'><i className='bx bx-cart'></i></button>
                             </div>
                         </div>
                     </Link>

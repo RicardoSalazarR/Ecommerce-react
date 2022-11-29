@@ -13,8 +13,8 @@ const Home = () => {
     const products = useSelector(state => state.products)
     const [categories, setCategories] = useState([])
     const [inputSearch, setInputSearch] = useState('')
-    const[priceFrom, setPriceFrom] = useState('') 
-    const[priceTo, setPriceTo] = useState('')
+    const [priceFrom, setPriceFrom] = useState('')
+    const [priceTo, setPriceTo] = useState('')
 
     useEffect(() => {
         dispatch(getProductsThunk())
@@ -31,17 +31,19 @@ const Home = () => {
                 <div>
                     <h2>Price</h2>
                     <Form>
-                        <fieldset enable>
-                            <Form.Group className="mb-3" onChange={e=> setPriceFrom(e.target.value)} >
-                                <Form.Label htmlFor="disabledTextInput">From</Form.Label>
-                                <Form.Control id="disabledTextInput"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" onChange={e => setPriceTo(e.target.value)}>
-                                <Form.Label htmlFor="disabledSelect">To</Form.Label>
-                                <Form.Control id="disabledSelect"/>
-                            </Form.Group>
-                            <Button type="submit" onClick={()=>alert(priceFrom+' '+priceTo)} >Submit</Button>
-                        </fieldset>
+                        <Form.Group className="mb-3" controlId="formBasicEmail" onChange={e => setPriceFrom(e.target.value)}>
+                            <Form.Label>From</Form.Label>
+                            <Form.Control type="number" />
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicPassword" onChange={e => setPriceTo(e.target.value)}>
+                            <Form.Label>To</Form.Label>
+                            <Form.Control type="number"/>
+                        </Form.Group>
+                        <Button type="submit" onClick={() => alert(priceFrom + ' ' + priceTo)} >Submit</Button>
                     </Form>
                 </div>
                 <hr />
@@ -86,7 +88,7 @@ const Home = () => {
                                             <span>Price </span>
                                             <span> ${product.price}</span>
                                         </div>
-                                        <button className='add-to-cart-card'><i class='bx bx-cart'></i></button>
+                                        <button className='add-to-cart-card'><i className='bx bx-cart'></i></button>
                                     </div>
                                 </div>
                             </Link>

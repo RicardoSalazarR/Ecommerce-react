@@ -7,22 +7,25 @@ import Purchases from './pages/Purchases'
 import Login from './pages/Login'
 import NavBar from './components/NavBar'
 import LoadingScreen from './components/LoadingScreen'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
+import ProtectedRoutes from './components/ProtectedRoutes'
 
 function App() {
 
-  const isLoading = useSelector(state =>state.isLoading)
+  const isLoading = useSelector(state => state.isLoading)
 
   return (
     <div className="App">
       <HashRouter>
-        <NavBar/>
-        {isLoading&&<LoadingScreen/>}
+        <NavBar />
+        {isLoading && <LoadingScreen />}
         <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<Home />} />
           <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/purchases" element={<Purchases />} />
           <Route path="/login" element={<Login />} />
+          <Route element={<ProtectedRoutes/>}>
+            <Route path="/purchases" element={<Purchases />} />
+          </Route>
         </Routes>
       </HashRouter>
     </div>
