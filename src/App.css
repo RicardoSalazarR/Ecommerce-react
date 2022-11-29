@@ -258,6 +258,7 @@ padding-bottom: 4rem;
   color: white;
   background-color: rgb(231, 96, 91);
   border: none;
+  gap: 1rem;
 }
 .related-items{
   display: grid;
@@ -308,4 +309,8 @@ color: darksalmon;
 
 .btn-submit:hover{
   background-color: rgb(228, 129, 96) !important;
+}
+
+.product-title{
+  font-weight: bold;
 }

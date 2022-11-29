@@ -55,7 +55,7 @@ const ProductDetail = () => {
                         }
                     </div>
                 </div>
-                <h3 className='grid title'>{product?.title}</h3>
+                <h3 className='grid title product-title'>{product?.title}</h3>
                 <p className='grid description'>{product?.description}</p>
                 <div className='grid price'>
                     <span>Price</span>
