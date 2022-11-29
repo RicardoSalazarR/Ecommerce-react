@@ -149,9 +149,6 @@ a{
   flex-direction: column;
 }
 
-.categories>p{
-  
-}
 .categories>p:hover{
   cursor:pointer;
 }
