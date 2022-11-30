@@ -9,6 +9,7 @@ const Purchases = () => {
     useEffect(()=>{
         dispatch(getPurchasesThunk())
     },[])
+    console.log(purchases);
     return (
         <div>
             <h1>Purchases</h1>
@@ -16,7 +17,14 @@ const Purchases = () => {
                 {
                     purchases.map(purchase=>(
                         <div key={purchase.id}>
-                            <h2>{purchase.id}</h2>
+                            <h2>{purchase.createdAt}</h2>
+                            <div>
+                                {purchase.cart.products.map(product=>(
+                                    <div key={product.id}>{product.title}</div>
+                                ))
+
+                                }
+                            </div>
                         </div>
                     ))
                 }

@@ -45,7 +45,6 @@ const ProductDetail = () => {
                                 <div key={product.productImgs.indexOf(image)}>
                                     <img
                                         src={image}
-                                        alt=""
                                         className='product-images'
                                         onClick={() => setIndexImage(product?.productImgs.indexOf(image))}
                                     />
@@ -69,14 +68,23 @@ const ProductDetail = () => {
                         <button onClick={() => setQuantity(quantity + 1)}>+</button>
                     </div>
                 </div>
-                <button className='grid btn-cart'>add to cart<i className='bx bx-cart'></i></button>
+                <button 
+                    className='grid btn-cart'
+                    onClick={()=>{
+                        const products={
+                            id:product.id,
+                            quantity:quantity
+                        }
+                        console.log(products);
+                    }}
+                >add to cart<i className='bx bx-cart'></i></button>
             </div>
 
             <h2>Related Products</h2>
             <div className='related-items'>
 
                 {productsRelated.map(product => (
-                    <Link className='product-card' to={`/product/${product.id}`}>
+                    <Link className='product-card' to={`/product/${product.id}`}key={product.id}>
                         <div>
                             <div>
                                 <img className='product-image' src={product.productImgs[0]} alt="" />
