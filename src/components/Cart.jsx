@@ -8,6 +8,7 @@ const Cart = ({show,handleClose}) => {
 
     const dispatch = useDispatch()
     const cartProducts = useSelector(state=>state.cart)
+    const [total, setTotal] = useState(0)
 
     useEffect(()=>{
         dispatch(getCartThunk());
@@ -19,17 +20,29 @@ const Cart = ({show,handleClose}) => {
                 <Offcanvas.Title>Cart</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-                <div>
+                <div className='cart-products-container'>
                     {
                         cartProducts.map(product=>(
-                            <div key={product.id}>
-                                <span>{product.brand}</span>
-                                <span>{product.title}</span>
-                                <span>{product.quantity}</span>
+                            <div key={product.id} className='cart-product'>
+                                <span className='cart-brand-product'>{product.brand}</span>
+                                <span className='cart-title-product' >{product.title}</span>
+                                <div className='cart-quantity-product'>
+                                    <button>-</button>
+                                    <span>{product.quantity}</span>
+                                    <button>+</button>
+                                </div>
+                                <span className='cart-total-text'>total</span>
+                                <span className='cart-total-product'>${product.price*product.quantity}</span>
+                                <button className='cart-delete-product'><i class='bx bx-trash'></i></button>
                             </div>
                         ))
                     }
                 </div>
+                <div className='cart-total'>
+                    <p>Total</p>
+                    <p>{total}</p>
+                </div>
+                <button className='checkout'>Checkout</button>
             </Offcanvas.Body>
         </Offcanvas>
     );
