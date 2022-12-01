@@ -75,23 +75,27 @@ const Home = () => {
                 </div>
                 <div className='products-container'>
                     {products.map(product => (
-                        <li key={product.id}>
-                            <Link className='product-card' to={`/product/${product.id}`}>
+                        <Link className='product-card' to={`/product/${product.id}`} key={product.id}>
+                            <div>
                                 <div>
-                                    <div>
-                                        <img className='product-image' src={product.productImgs[0]} alt="" />
-                                    </div>
-                                    <div className='card-description'>
-                                        <span className='title'> <b> {product.title} </b> </span>
-                                        <div className='price'>
-                                            <span>Price </span>
-                                            <span> ${product.price}</span>
-                                        </div>
-                                        <button className='add-to-cart-card'><i className='bx bx-cart'></i></button>
-                                    </div>
+                                    <img className='product-image' src={product.productImgs[0]} alt="" />
                                 </div>
-                            </Link>
-                        </li>
+                                <div className='card-description'>
+                                    <span className='title'> <b> {product.title} </b> </span>
+                                    <div className='price'>
+                                        <span>Price </span>
+                                        <span> ${product.price}</span>
+                                    </div>
+                                    <button
+                                        className='add-to-cart-card'
+                                        type='submit'
+                                        onClick={
+                                            () => alert('hi')
+                                        }
+                                    ><i className='bx bx-cart'></i></button>
+                                </div>
+                            </div>
+                        </Link>
                     ))}
                 </div>
             </div>

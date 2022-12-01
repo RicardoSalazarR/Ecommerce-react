@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCartThunk } from '../store/slices/cart.slice';
+import { getCartThunk, checkoutCartThunk } from '../store/slices/cart.slice';
 
 const Cart = ({show,handleClose}) => {
 
@@ -28,12 +28,12 @@ const Cart = ({show,handleClose}) => {
                                 <span className='cart-title-product' >{product.title}</span>
                                 <div className='cart-quantity-product'>
                                     <button>-</button>
-                                    <span>{product.quantity}</span>
+                                    <span>{product.productsInCart.quantity}</span>
                                     <button>+</button>
                                 </div>
                                 <span className='cart-total-text'>total</span>
-                                <span className='cart-total-product'>${product.price*product.quantity}</span>
-                                <button className='cart-delete-product'><i class='bx bx-trash'></i></button>
+                                <span className='cart-total-product'>${product.price*product.productsInCart.quantity}</span>
+                                <button className='cart-delete-product'><i className='bx bx-trash'></i></button>
                             </div>
                         ))
                     }
@@ -42,7 +42,10 @@ const Cart = ({show,handleClose}) => {
                     <p>Total</p>
                     <p>{total}</p>
                 </div>
-                <button className='checkout'>Checkout</button>
+                <button 
+                    className='checkout'
+                    onClick={()=>dispatch(checkoutCartThunk())}
+                >Checkout</button>
             </Offcanvas.Body>
         </Offcanvas>
     );

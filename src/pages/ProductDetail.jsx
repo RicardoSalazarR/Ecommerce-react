@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { addCartThunk } from '../store/slices/cart.slice';
 import { getProductsThunk } from '../store/slices/products.slice';
 
 const ProductDetail = () => {
@@ -21,6 +22,14 @@ const ProductDetail = () => {
     const product = productsList.find(productsItem => productsItem.id === Number(id))
     const productsRelated = productsList.filter(productsItem =>
         productsItem.category.id === product.category.id)
+
+    const addToCart=()=>{
+        const dataProduct={
+            id:product.id,
+            quantity:quantity
+        }
+        dispatch(addCartThunk(dataProduct))
+    }
 
     return (
         <div className='product-detail'>
@@ -70,13 +79,7 @@ const ProductDetail = () => {
                 </div>
                 <button 
                     className='grid btn-cart'
-                    onClick={()=>{
-                        const products={
-                            id:product.id,
-                            quantity:quantity
-                        }
-                        console.log(products);
-                    }}
+                    onClick={addToCart}
                 >add to cart<i className='bx bx-cart'></i></button>
             </div>
 
