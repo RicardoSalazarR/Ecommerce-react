@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getProductsThunk, filterProductsThunk, filterQueryThunk } from '../store/slices/products.slice';
+import { addCartThunk } from '../store/slices/cart.slice';
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -15,6 +16,7 @@ const Home = () => {
     const [inputSearch, setInputSearch] = useState('')
     const [priceFrom, setPriceFrom] = useState('')
     const [priceTo, setPriceTo] = useState('')
+    const [quantity, setQuantity] = useState(1)
 
     useEffect(() => {
         dispatch(getProductsThunk())
@@ -23,6 +25,14 @@ const Home = () => {
             .then(res => setCategories(res.data.data.categories))
     }, [])
 
+    const addToCart = () => {
+        const dataProduct = {
+            id: products.id,
+            quantity: quantity
+        }
+        alert('product add')
+        dispatch(addCartThunk(dataProduct))
+    }
 
 
     return (
@@ -76,8 +86,9 @@ const Home = () => {
                 <div className='products-container'>
                     {products.map(product => (
                         <>
-                            <Link className='product-card' to={`/product/${product.id}`} key={product.id}>
-                                <div>
+                            <div className='product-card'>
+                                <Link className='product-items' to={`/product/${product.id}`} key={product.id}>
+
                                     <div>
                                         <img className='product-image' src={product.productImgs[0]} alt="" />
                                     </div>
@@ -87,17 +98,16 @@ const Home = () => {
                                             <span>Price </span>
                                             <span> ${product.price}</span>
                                         </div>
-                                        <button
-                                            className='add-to-cart-card'
-                                            type='submit'
-                                        // onClick={
-                                        //     () => alert('hi')
-                                        // }
-                                        ><i className='bx bx-cart'></i></button>
-                                    </div>
-                                </div>
-                            </Link>
 
+                                    </div>
+
+                                </Link>
+                                <button
+                                    className='add-to-cart-card'
+                                    type='submit'
+                                    onClick={addToCart}
+                                ><i className='bx bx-cart'></i></button>
+                            </div>
                         </>
                     ))}
                 </div>
