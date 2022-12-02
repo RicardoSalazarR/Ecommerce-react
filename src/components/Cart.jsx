@@ -13,7 +13,13 @@ const Cart = ({ show, handleClose }) => {
     useEffect(() => {
         dispatch(getCartThunk());
     }, [])
-
+    
+    const getTotal=()=>{
+        total=0
+        for (const product of cartProducts) {
+            setTotal(total+1)
+        }
+    }
     return (
         <Offcanvas show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton>
@@ -26,11 +32,7 @@ const Cart = ({ show, handleClose }) => {
                             <div key={product.id} className='cart-product'>
                                 <span className='cart-brand-product'>{product.brand}</span>
                                 <span className='cart-title-product' >{product.title}</span>
-                                <div className='cart-quantity-product'>
-                                    <button className='btn-cart'>-</button>
-                                    <span>{product.productsInCart.quantity}</span>
-                                    <button className='btn-cart'>+</button>
-                                </div>
+                                <span className='cart-quantity-product'>{product.productsInCart.quantity}</span>
                                 <span className='cart-total-text'>Total</span>
                                 <span className='cart-total-product'>${product.price * product.productsInCart.quantity}</span>
                                 <button className='cart-delete-product'><i className='bx bx-trash'></i></button>
