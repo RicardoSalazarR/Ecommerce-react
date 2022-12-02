@@ -4,15 +4,15 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCartThunk, checkoutCartThunk } from '../store/slices/cart.slice';
 
-const Cart = ({show,handleClose}) => {
+const Cart = ({ show, handleClose }) => {
 
     const dispatch = useDispatch()
-    const cartProducts = useSelector(state=>state.cart)
+    const cartProducts = useSelector(state => state.cart)
     const [total, setTotal] = useState(0)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getCartThunk());
-    },[])
+    }, [])
 
     return (
         <Offcanvas show={show} onHide={handleClose}>
@@ -22,17 +22,17 @@ const Cart = ({show,handleClose}) => {
             <Offcanvas.Body>
                 <div className='cart-products-container'>
                     {
-                        cartProducts.map(product=>(
+                        cartProducts.map(product => (
                             <div key={product.id} className='cart-product'>
                                 <span className='cart-brand-product'>{product.brand}</span>
                                 <span className='cart-title-product' >{product.title}</span>
                                 <div className='cart-quantity-product'>
-                                    <button>-</button>
+                                    <button className='btn-cart'>-</button>
                                     <span>{product.productsInCart.quantity}</span>
-                                    <button>+</button>
+                                    <button className='btn-cart'>+</button>
                                 </div>
-                                <span className='cart-total-text'>total</span>
-                                <span className='cart-total-product'>${product.price*product.productsInCart.quantity}</span>
+                                <span className='cart-total-text'>Total</span>
+                                <span className='cart-total-product'>${product.price * product.productsInCart.quantity}</span>
                                 <button className='cart-delete-product'><i className='bx bx-trash'></i></button>
                             </div>
                         ))
@@ -42,9 +42,9 @@ const Cart = ({show,handleClose}) => {
                     <p>Total</p>
                     <p>{total}</p>
                 </div>
-                <button 
+                <button
                     className='checkout'
-                    onClick={()=>dispatch(checkoutCartThunk())}
+                    onClick={() => dispatch(checkoutCartThunk())}
                 >Checkout</button>
             </Offcanvas.Body>
         </Offcanvas>

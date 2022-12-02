@@ -350,6 +350,7 @@ color: darksalmon;
   grid-area: quantity;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 .cart-quantity-product>button{
   width: 15px;
@@ -429,4 +430,13 @@ color: darksalmon;
 .purchase-created{
   border-bottom: 1px solid black;
   margin-bottom: 1.5rem;
+}
+
+.btn-cart{
+  background-color: rgba(233, 179, 161, 0.445);
+  padding: 8px;
+}
+
+.btn-cart:hover{
+  background-color: rgba(226, 158, 136, 0.604);
 }
