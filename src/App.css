@@ -420,21 +420,34 @@ color: darksalmon;
   /* border: 1px solid black; */
   padding: 1.5rem;
   min-width: 550px;
+  width: 50%;
+  max-width: 687px;
   background-color: rgba(233, 150, 122, 0.129);
   border-radius: 8px;
 }
 
 .purchases-title{
   margin-bottom: 0.5rem;
+  width: 73%;
 }
 
 .product-info{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 6fr 1fr 1fr;
+  text-justify: center;
+}
+
+.purchases-quantity{
+  justify-self: center;
+  text-align: center;
+  text-justify: center;
 }
 
 .product-price{
   font-weight: bold;
+  align-self: start;
+  justify-self: start;
+  text-justify: start;
 }
 
 .purchase-created{

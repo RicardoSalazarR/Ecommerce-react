@@ -9,6 +9,18 @@ const Purchases = () => {
     useEffect(() => {
         dispatch(getPurchasesThunk())
     }, [])
+    const purchaseDate = purchases[0]?.createdAt
+
+    const date=(purchaseDate)=>{
+        const timeStamp = new Date(purchaseDate).getTime()
+    
+        const day = new Date(timeStamp).getDate()
+        const month = new Date(timeStamp).toLocaleString('default', {month:'long'})
+        const year = new Date(timeStamp).getFullYear()
+
+        return (month +' '+day+' '+year)
+    }
+
     return (
         <div>
             <h1>Purchases</h1>
@@ -16,11 +28,12 @@ const Purchases = () => {
                 {
                     purchases.map(purchase => (
                         <div className='purchases-card' key={purchase.id}>
-                            <h2 className='purchase-created'>{purchase.createdAt}</h2>
+                            <h2 className='purchase-created'>{date(purchase.createdAt)}</h2>
                             <div>
                                 {purchase.cart.products.map(product => (
-                                    <div className="product-info">
+                                    <div className="product-info" key={product.id}>
                                         <div className='purchases-title' key={product.id}>{product.title}</div>
+                                        <div className='purchases-quantity'>{product.productsInCart.quantity}</div>
                                         <span className='product-price'>$ {product.price}</span>
                                     </div>
                                 ))
