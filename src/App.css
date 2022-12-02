@@ -380,6 +380,7 @@ color: darksalmon;
   font-size: 25px;
   color: rgb(231, 96, 91);
   justify-self: end;
+  background-color: transparent;
 }
 
 .cart-total{
