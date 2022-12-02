@@ -9,7 +9,6 @@ const Purchases = () => {
     useEffect(() => {
         dispatch(getPurchasesThunk())
     }, [])
-    const purchaseDate = purchases[0]?.createdAt
 
     const date=(purchaseDate)=>{
         const timeStamp = new Date(purchaseDate).getTime()
