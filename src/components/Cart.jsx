@@ -8,16 +8,24 @@ const Cart = ({ show, handleClose }) => {
 
     const dispatch = useDispatch()
     const cartProducts = useSelector(state => state.cart)
-    const [total, setTotal] = useState(0)
+    // const [total, setTotal] = useState(0)
 
     useEffect(() => {
         dispatch(getCartThunk());
     }, [])
-    
-    const getTotal=()=>{
-        total=0
-        for (const product of cartProducts) {
-            setTotal(total+1)
+
+    let total = 0;
+    if (cartProducts.length) {
+        if (cartProducts?.length > 1) {
+            total = cartProducts?.reduce((initial, current) => {
+                if (typeof initial === 'number') {
+                    return initial + (current.price * current.productsInCart?.quantity)
+                } else {
+                    return (initial.price * initial.productsInCart?.quantity) + (current.price * current.productsInCart?.quantity)
+                }
+            });
+        } else {
+            total = cartProducts?.[0].price * cartProducts?.[0].productsInCart?.quantity
         }
     }
     return (
@@ -42,7 +50,7 @@ const Cart = ({ show, handleClose }) => {
                 </div>
                 <div className='cart-total'>
                     <p>Total</p>
-                    <p>{total}</p>
+                    <p>$ {total}</p>
                 </div>
                 <button
                     className='checkout'
