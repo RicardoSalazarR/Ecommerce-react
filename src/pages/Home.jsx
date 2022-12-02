@@ -16,7 +16,6 @@ const Home = () => {
     const [inputSearch, setInputSearch] = useState('')
     const [priceFrom, setPriceFrom] = useState('')
     const [priceTo, setPriceTo] = useState('')
-    const [quantity, setQuantity] = useState(1)
 
     useEffect(() => {
         dispatch(getProductsThunk())
@@ -25,12 +24,12 @@ const Home = () => {
             .then(res => setCategories(res.data.data.categories))
     }, [])
 
-    const addToCart = () => {
+    const addToCart = (id) => {
         const dataProduct = {
-            id: products.id,
-            quantity: quantity
+            id: id,
+            quantity: 1
         }
-        alert('product add')
+        alert('product added')
         dispatch(addCartThunk(dataProduct))
     }
 
@@ -85,8 +84,7 @@ const Home = () => {
                 </div>
                 <div className='products-container'>
                     {products.map(product => (
-                        <>
-                            <div className='product-card'>
+                            <div className='product-card' key={product.id}>
                                 <Link className='product-items' to={`/product/${product.id}`} key={product.id}>
 
                                     <div>
@@ -105,10 +103,9 @@ const Home = () => {
                                 <button
                                     className='add-to-cart-card'
                                     type='submit'
-                                    onClick={addToCart}
+                                    onClick={()=>addToCart(product.id)}
                                 ><i className='bx bx-cart'></i></button>
                             </div>
-                        </>
                     ))}
                 </div>
             </div>
