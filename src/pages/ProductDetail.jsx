@@ -23,10 +23,10 @@ const ProductDetail = () => {
     const productsRelated = productsList.filter(productsItem =>
         productsItem.category.id === product.category.id)
 
-    const addToCart=()=>{
-        const dataProduct={
-            id:product.id,
-            quantity:quantity
+    const addToCart = () => {
+        const dataProduct = {
+            id: product.id,
+            quantity: quantity
         }
         dispatch(addCartThunk(dataProduct))
     }
@@ -77,7 +77,7 @@ const ProductDetail = () => {
                         <button onClick={() => setQuantity(quantity + 1)}>+</button>
                     </div>
                 </div>
-                <button 
+                <button
                     className='grid btn-cart'
                     onClick={addToCart}
                 >add to cart<i className='bx bx-cart'></i></button>
@@ -87,7 +87,7 @@ const ProductDetail = () => {
             <div className='related-items'>
 
                 {productsRelated.map(product => (
-                    <Link className='product-card' to={`/product/${product.id}`}key={product.id}>
+                    <Link className='product-card' to={`/product/${product.id}`} key={product.id}>
                         <div>
                             <div>
                                 <img className='product-image' src={product.productImgs[0]} alt="" />
