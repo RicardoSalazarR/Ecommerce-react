@@ -396,3 +396,37 @@ color: darksalmon;
   border: none;
   border-radius: 8px;
 }
+
+.purchases{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.purchases-card{
+  /* border: 1px solid black; */
+  padding: 1.5rem;
+  min-width: 550px;
+  background-color: rgba(233, 150, 122, 0.129);
+  border-radius: 8px;
+}
+
+.purchases-title{
+  margin-bottom: 0.5rem;
+}
+
+.product-info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-price{
+  font-weight: bold;
+}
+
+.purchase-created{
+  border-bottom: 1px solid black;
+  margin-bottom: 1.5rem;
+}
