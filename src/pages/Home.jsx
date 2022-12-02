@@ -29,7 +29,6 @@ const Home = () => {
             id: id,
             quantity: 1
         }
-        alert('product added')
         dispatch(addCartThunk(dataProduct))
     }
 
@@ -84,28 +83,28 @@ const Home = () => {
                 </div>
                 <div className='products-container'>
                     {products.map(product => (
-                            <div className='product-card' key={product.id}>
-                                <Link className='product-items' to={`/product/${product.id}`} key={product.id}>
+                        <div className='product-card' key={product.id}>
+                            <Link className='product-items' to={`/product/${product.id}`} key={product.id}>
 
-                                    <div>
-                                        <img className='product-image' src={product.productImgs[0]} alt="" />
-                                    </div>
-                                    <div className='card-description'>
-                                        <span className='title'> <b> {product.title} </b> </span>
-                                        <div className='price'>
-                                            <span>Price </span>
-                                            <span> ${product.price}</span>
-                                        </div>
-
+                                <div>
+                                    <img className='product-image' src={product.productImgs[0]} alt="" />
+                                </div>
+                                <div className='card-description'>
+                                    <span className='title'> <b> {product.title} </b> </span>
+                                    <div className='price'>
+                                        <span>Price </span>
+                                        <span> ${product.price}</span>
                                     </div>
 
-                                </Link>
-                                <button
-                                    className='add-to-cart-card'
-                                    type='submit'
-                                    onClick={()=>addToCart(product.id)}
-                                ><i className='bx bx-cart'></i></button>
-                            </div>
+                                </div>
+
+                            </Link>
+                            <button
+                                className='add-to-cart-card'
+                                type='submit'
+                                onClick={() => addToCart(product.id)}
+                            ><i className='bx bx-cart'></i></button>
+                        </div>
                     ))}
                 </div>
             </div>
