@@ -54,6 +54,7 @@ const Login = () => {
                     <Button variant="primary" type="submit" className='btn-submit'>
                         Submit
                     </Button>
+                    <p>Don't have an account? Sign up</p>
                 </div>
             </Form>
         </div>
