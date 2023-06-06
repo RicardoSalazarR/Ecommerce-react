@@ -311,7 +311,7 @@ a {
 
 .form-input {
   width: 500px;
-  height: 370px;
+  height: 500px;
   margin: 2rem auto;
   /* border: 1px solid black; */
   border-radius: 8px;
@@ -574,3 +574,13 @@ img {
     padding-bottom: 4rem;
   }
 }
+
+
+
+.prueba-data-container{
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+
