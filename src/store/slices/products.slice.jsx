@@ -14,22 +14,22 @@ export const productsSlice = createSlice({
 
 export const getProductsThunk = () => dispatch => {
     dispatch(setIsLoading(true))
-    axios.get('https://e-commerce-api.academlo.tech/api/v1/products')
-        .then(res => dispatch(setProducts(res.data.data.products)))
+    axios.get('https://e-commerce-api-v2.academlo.tech/api/v1/products')
+        .then(res => dispatch(setProducts(res.data)))
         .finally(() => dispatch(setIsLoading(false)))
 }
 
 export const filterProductsThunk = (id) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get(`https://e-commerce-api.academlo.tech/api/v1/products?category=${id}`)
-        .then((res) => dispatch(dispatch(setProducts(res.data.data.products))))
+    return axios.get(`https://e-commerce-api-v2.academlo.tech/api/v1/products?categoryId=${id}`)
+        .then((res) => dispatch(dispatch(setProducts(res.data))))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
 export const filterQueryThunk = (inputSearch) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get(`https://e-commerce-api.academlo.tech/api/v1/products?query=${inputSearch}`)
-        .then((res) => dispatch(dispatch(setProducts(res.data.data.products))))
+    return axios.get(`https://e-commerce-api-v2.academlo.tech/api/v1/products?title=${inputSearch}`)
+        .then((res) => dispatch(dispatch(setProducts(res.data))))
         .finally(() => dispatch(setIsLoading(false)));
 }
 

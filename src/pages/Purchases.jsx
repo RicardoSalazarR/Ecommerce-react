@@ -22,22 +22,20 @@ const Purchases = () => {
 
     return (
         <div>
-            <h1>Purchases</h1>
+            <h1 onClick={()=>console.log(purchases)}>Purchases</h1>
             <ul className='purchases'>
                 {
                     purchases.map(purchase => (
                         <div className='purchases-card' key={purchase.id}>
                             <h2 className='purchase-created'>{date(purchase.createdAt)}</h2>
                             <div>
-                                {purchase.cart.products.map(product => (
-                                    <div className="product-info" key={product.id}>
-                                        <div className='purchases-title' key={product.id}>{product.title}</div>
-                                        <div className='purchases-quantity'>{product.productsInCart.quantity}</div>
-                                        <span className='product-price'>$ {product.price}</span>
+                                {/* {purchase.product.map(product => ( */}
+                                    <div className="product-info">
+                                        <div className='purchases-title'>{purchase.product.title}</div>
+                                        <div className='purchases-quantity'>{purchase.quantity}</div>
+                                        <span className='product-price'>$ {purchase.product.price}</span>
                                     </div>
-                                ))
-
-                                }
+                                {/*})) } */}
                             </div>
                         </div>
                     ))

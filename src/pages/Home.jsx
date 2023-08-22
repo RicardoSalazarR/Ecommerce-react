@@ -20,13 +20,13 @@ const Home = () => {
     useEffect(() => {
         dispatch(getProductsThunk())
 
-        axios.get('https://e-commerce-api.academlo.tech/api/v1/products/categories')
-            .then(res => setCategories(res.data.data.categories))
+        axios.get('https://e-commerce-api-v2.academlo.tech/api/v1/categories')
+            .then(res => setCategories(res.data))
     }, [])
 
     const addToCart = (id) => {
         const dataProduct = {
-            id: id,
+            productId: id,
             quantity: 1
         }
         dispatch(addCartThunk(dataProduct))
@@ -56,7 +56,7 @@ const Home = () => {
                 <hr />
                 <div className='categories' >
                     <h2>Category</h2>
-                    {categories.map(category => (
+                    {categories?.map(category => (
                         <p key={category.id}
                             onClick={() => dispatch(filterProductsThunk(category.id))} className='category-name'
                         >{category.name}</p>
@@ -87,7 +87,7 @@ const Home = () => {
                             <Link className='product-items' to={`/product/${product.id}`} key={product.id}>
 
                                 <div>
-                                    <img className='product-image' src={product.productImgs[0]} alt="" />
+                                    <img className='product-image' src={product.images[0].url} alt="" />
                                 </div>
                                 <div className='card-description'>
                                     <span className='title'> <b> {product.title} </b> </span>

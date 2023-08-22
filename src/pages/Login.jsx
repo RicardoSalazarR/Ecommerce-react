@@ -12,11 +12,10 @@ const Login = () => {
 
   const submit = (data) => {
     axios
-      .post("https://e-commerce-api.academlo.tech/api/v1/users/login", data)
+      .post("https://e-commerce-api-v2.academlo.tech/api/v1/users/login", data)
       .then((res) => {
         navigate("/");
-        console.log(res.data.data.token);
-        localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("token", res.data.token);
       })
       .catch((error) => {
         if (error.response?.status === 404) {
@@ -60,7 +59,7 @@ const Login = () => {
           </Button>
           <p>
             Don't have an account?{" "}
-            <a onClick={() => navigate("/signup")}>Sign up</a>
+            <a onClick={() => navigate("/signup")} style={{cursor:'pointer'}}>Sign up</a>
           </p>
         </div>
       </Form>

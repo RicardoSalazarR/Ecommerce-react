@@ -38,11 +38,11 @@ const Cart = ({ show, handleClose }) => {
                     {
                         cartProducts.map(product => (
                             <div key={product.id} className='cart-product'>
-                                <span className='cart-brand-product'>{product.brand}</span>
-                                <span className='cart-title-product' >{product.title}</span>
-                                <span className='cart-quantity-product'>{product.productsInCart.quantity}</span>
+                                <span className='cart-brand-product'>{product.product.brand}</span>
+                                <span className='cart-title-product' >{product.product.title}</span>
+                                <span className='cart-quantity-product'>{product.quantity}</span>
                                 <span className='cart-total-text'>Total</span>
-                                <span className='cart-total-product'>${product.price * product.productsInCart.quantity}</span>
+                                <span className='cart-total-product'>${product.product.price * product.quantity}</span>
                                 <button className='cart-delete-product'><i className='bx bx-trash'></i></button>
                             </div>
                         ))

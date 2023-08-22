@@ -10,10 +10,11 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const submit = (data) => {
-    console.log(data);
     axios
       .post("https://e-commerce-api-v2.academlo.tech/api/v1/users", data)
-      .then((res) => navigate("/login"))
+      .then((res) => {
+        navigate("/login")})
+        alert('Usuario registrado exitosamente')
       .catch((error) => {
         if (error.response?.status === 404) {
           alert("Algo salio mal");

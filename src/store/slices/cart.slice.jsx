@@ -15,21 +15,21 @@ export const cartSlice = createSlice({
 
 export const getCartThunk = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get('https://e-commerce-api.academlo.tech/api/v1/cart', getConfig())
-        .then((res) => dispatch(setCart(res.data.data.cart.products)))
+    return axios.get('https://e-commerce-api-v2.academlo.tech/api/v1/cart', getConfig())
+        .then((res) => dispatch(setCart(res.data)))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
 export const addCartThunk = (product) => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.post('https://e-commerce-api.academlo.tech/api/v1/cart',product, getConfig())
+    return axios.post('https://e-commerce-api-v2.academlo.tech/api/v1/cart',product, getConfig())
         .then(() => dispatch(dispatch(getCartThunk())))
         .finally(() => dispatch(setIsLoading(false)));
 }
 
 export const checkoutCartThunk = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.post('https://e-commerce-api.academlo.tech/api/v1/purchases',{},getConfig())
+    return axios.post('https://e-commerce-api-v2.academlo.tech/api/v1/purchases',{},getConfig())
         .then(() => dispatch(setCart([])))
         .finally(() => dispatch(setIsLoading(false)));
 }

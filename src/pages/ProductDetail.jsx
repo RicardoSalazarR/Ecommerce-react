@@ -25,7 +25,7 @@ const ProductDetail = () => {
 
     const addToCart = () => {
         const dataProduct = {
-            id: product.id,
+            productId: product.id,
             quantity: quantity
         }
         dispatch(addCartThunk(dataProduct))
@@ -41,21 +41,21 @@ const ProductDetail = () => {
                                 setIndexImage(indexImage - 1)
                             }
                         }}> {'<'} </button>
-                        <img className='main-image' src={product?.productImgs[indexImage]} alt="" />
+                        <img className='main-image' src={product?.images[indexImage].url} alt="" />
                         <button className='change-image' onClick={() => {
-                            if (indexImage < product.productImgs.length - 1) {
+                            if (indexImage < product.images.length - 1) {
                                 setIndexImage(indexImage + 1)
                             }
                         }}>{'>'}</button>
                     </div>
                     <div className='litle-images'>
                         {
-                            product?.productImgs.map(image => (
-                                <div key={product.productImgs.indexOf(image)}>
+                            product?.images.map(image => (
+                                <div key={product.images.indexOf(image)}>
                                     <img
-                                        src={image}
+                                        src={image.url}
                                         className='product-images'
-                                        onClick={() => setIndexImage(product?.productImgs.indexOf(image))}
+                                        onClick={() => setIndexImage(product?.images.indexOf(image))}
                                     />
                                 </div>
 
@@ -90,7 +90,7 @@ const ProductDetail = () => {
                     <Link className='product-card' to={`/product/${product.id}`} key={product.id}>
                         <div>
                             <div>
-                                <img className='product-image' src={product.productImgs[0]} alt="" />
+                                <img className='product-image' src={product.images[0].url} alt="" />
                             </div>
                             <div className='card-description'>
                                 <span className='title'> <b> {product.title} </b> </span>
