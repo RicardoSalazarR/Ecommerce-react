@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCartThunk, checkoutCartThunk } from '../store/slices/cart.slice';
 
 const Cart = ({ show, handleClose }) => {
-
+    const [total,setTotal] = useState(0)
     const dispatch = useDispatch()
     const cartProducts = useSelector(state => state.cart)
     // const [total, setTotal] = useState(0)
@@ -13,19 +13,15 @@ const Cart = ({ show, handleClose }) => {
     useEffect(() => {
         dispatch(getCartThunk());
     }, [])
-
-    let total = 0;
     if (cartProducts.length) {
         if (cartProducts?.length > 1) {
-            total = cartProducts?.reduce((initial, current) => {
-                if (typeof initial === 'number') {
-                    return initial + (current.price * current.productsInCart?.quantity)
-                } else {
-                    return (initial.price * initial.productsInCart?.quantity) + (current.price * current.productsInCart?.quantity)
-                }
-            });
+            let add = 0
+            for (const product of cartProducts) {
+                add += parseFloat(product.product.price * product.quantity)
+            }
+            add!==total&&setTotal(add)
         } else {
-            total = cartProducts?.[0].price * cartProducts?.[0].productsInCart?.quantity
+            // total = cartProducts?.[0].price * cartProducts?.[0].productsInCart?.quantity
         }
     }
     return (
@@ -38,9 +34,10 @@ const Cart = ({ show, handleClose }) => {
                     {
                         cartProducts.map(product => (
                             <div key={product.id} className='cart-product'>
+                                <img src={product.product.images[0].url} alt="imagen" />
                                 <span className='cart-brand-product'>{product.product.brand}</span>
                                 <span className='cart-title-product' >{product.product.title}</span>
-                                <span className='cart-quantity-product'>{product.quantity}</span>
+                                <span className='cart-quantity-product'>quantity: {product.quantity}</span>
                                 <span className='cart-total-text'>Total</span>
                                 <span className='cart-total-product'>${product.product.price * product.quantity}</span>
                                 <button className='cart-delete-product'><i className='bx bx-trash'></i></button>
@@ -54,7 +51,10 @@ const Cart = ({ show, handleClose }) => {
                 </div>
                 <button
                     className='checkout'
-                    onClick={() => dispatch(checkoutCartThunk())}
+                    onClick={() => {
+                        dispatch(checkoutCartThunk())
+                        setTotal(0)
+                    }}
                 >Checkout</button>
             </Offcanvas.Body>
         </Offcanvas>

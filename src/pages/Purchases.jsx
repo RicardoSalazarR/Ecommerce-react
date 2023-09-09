@@ -22,7 +22,7 @@ const Purchases = () => {
 
     return (
         <div>
-            <h1 onClick={()=>console.log(purchases)}>Purchases</h1>
+            <h1>Purchases</h1>
             <ul className='purchases'>
                 {
                     purchases.map(purchase => (
