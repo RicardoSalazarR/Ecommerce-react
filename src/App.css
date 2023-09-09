@@ -381,6 +381,7 @@ a {
 .cart-product>img{
   grid-area: image;
   max-width: 50% !important;
+  max-height: 100px;
 }
 
 .cart-brand-product {
